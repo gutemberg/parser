@@ -59,6 +59,50 @@ function task1(){
     read.readAsText(file);
 }
 
+/*Task Plus*/
+function plus(){        
+    var file = document.getElementById('file').files[0];
+    var read = new FileReader();
+    read.onload = function(e) {
+        var contents = e.target.result;
+        var array = contents.split('\n');
+        var games = {};
+        var countGame = 0;
+
+        var game= {};
+        //Faz a leitura do arquivo games.log
+        for(var i=0; i< array.length; i++){
+            switch(true){
+                //Quando inicial o jogo
+                case array[i].indexOf('InitGame:') !== -1:
+                    game = {}
+                    game.kills_by_means = {};
+                    countGame++;
+                break;
+
+                //Quando inicia o jogo
+                case array[i].indexOf('Kill:') !== -1:
+                    var gun = array[i].split('killed')[1].split('by')[1].trim();
+                    
+                        if(Object.keys(game.kills_by_means).indexOf(gun) == -1){
+                           game.kills_by_means[gun] = 1;
+                        }else{
+                           game.kills_by_means[gun]++;
+                        }
+                    
+                break;
+
+                //Quando finaliza o jogo o game é inserido no objeto jogos
+                case array[i].indexOf('ShutdownGame:') !== -1:
+                    games['game-'+countGame] = game;                                
+                break;
+            }
+        }
+        //Gera o arquivo
+        generateFile('plus', JSON.stringify(games,null,2));
+    }
+    read.readAsText(file);
+}
 
 
 function generateFile(filename,text){
