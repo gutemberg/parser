@@ -2,6 +2,8 @@
 /*Faz o parser e gera e imprime conforme a task1 */
 function generateTask1(){        
     var file = document.getElementById('file').files[0];
+    //Validação se o arquivo está presente
+    if(!file){alert("Selecione o arquivo game.log!");return;}
     var read = new FileReader();
     read.onload = function(e) {
         var contents = e.target.result;
@@ -15,6 +17,13 @@ function generateTask1(){
         	switch(true){
         		//Quando inicial o jogo
         		case array[i].indexOf('InitGame:') !== -1:
+
+                    //Faz a inserção do game antes de iniciar um novo
+                    if(countGame>0){
+                        games['game-'+countGame] = game; 
+                    }
+
+                    //Inicia um novo game
 					game = {}
 					game.totalKills = 0;
 					game.players = [];
@@ -47,10 +56,6 @@ function generateTask1(){
         			}
         		break;
 
-        		//Quando finaliza o jogo o game é inserido no objeto jogos
-        		case array[i].indexOf('ShutdownGame:') !== -1:
-        			games['game_'+countGame] = game;				        		
-        		break;
         	}
         }
         //Gera o arquivo
@@ -63,6 +68,8 @@ function generateTask1(){
 /*Faz o parser e gera ranking por jogador conforme a task 2*/
 function generateRankingPerPlayer(){        
     var file = document.getElementById('file').files[0];
+    //Validação se o arquivo está presente
+    if(!file){alert("Selecione o arquivo game.log!");return;}
     var read = new FileReader();
     read.onload = function(e) {
         var contents = e.target.result;
@@ -106,8 +113,10 @@ function generateRankingPerPlayer(){
 
 
 /*Faz o parser e gera e imprime o relatório conforme a Task Plus*/
-function generateTaskplus(){        
+function generateTaskPlus(){        
     var file = document.getElementById('file').files[0];
+    //Validação se o arquivo está presente
+    if(!file){alert("Selecione o arquivo game.log!");return;}
     var read = new FileReader();
     read.onload = function(e) {
         var contents = e.target.result;
@@ -121,6 +130,12 @@ function generateTaskplus(){
             switch(true){
                 //Quando inicial o jogo
                 case array[i].indexOf('InitGame:') !== -1:
+                    //Faz a inserção do game antes de iniciar um novo
+                    if(countGame>0){
+                        games['game-'+countGame] = game; 
+                    }
+
+                    //Inicia um novo game
                     game = {}
                     game.kills_by_means = {};
                     countGame++;
@@ -136,11 +151,6 @@ function generateTaskplus(){
                            game.kills_by_means[gun]++;
                         }
                     
-                break;
-
-                //Quando finaliza o jogo o game é inserido no objeto jogos
-                case array[i].indexOf('ShutdownGame:') !== -1:
-                    games['game-'+countGame] = game;                                
                 break;
             }
         }
