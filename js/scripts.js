@@ -1,11 +1,10 @@
        
 /*Faz o parser do arquivo*/
 function task1(){        
-    var f = document.getElementById('file').files[0];
-    var r = new FileReader();
-    r.onload = function(e) {
+    var file = document.getElementById('file').files[0];
+    var read = new FileReader();
+    read.onload = function(e) {
         var contents = e.target.result;
-        var parsed = '';
         var array = contents.split('\n');
         var games = {};
         var countGame = 0;
@@ -52,26 +51,14 @@ function task1(){
         		case array[i].indexOf('ShutdownGame:') !== -1:
         			games['game_'+countGame] = game;				        		
         		break;
-
         	}
-
-
         }
-
-        generateFile('task1', JSON.stringify(games,null,2));
+        //Gera o arquivo
+        generateFile('task1_and_task2', JSON.stringify(games,null,2));
     }
-    r.readAsText(f);
+    read.readAsText(file);
 }
 
-function task2(){        
-    var f = document.getElementById('file').files[0];
-    var r = new FileReader();
-    r.onload = function(e) {
-        var contents = e.target.result;
-       	document.getElementById("result").innerHTML = contents;
-    }
-    r.readAsText(f);
-}
 
 
 function generateFile(filename,text){
