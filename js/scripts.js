@@ -1,6 +1,6 @@
        
 /*Faz o parser e gera e imprime conforme a task1 */
-function task1(){        
+function generateTask1(){        
     var file = document.getElementById('file').files[0];
     var read = new FileReader();
     read.onload = function(e) {
@@ -61,7 +61,7 @@ function task1(){
 
 
 /*Faz o parser e gera ranking por jogador conforme a task 2*/
-function taskRankingPerPlayer(){        
+function generateRankingPerPlayer(){        
     var file = document.getElementById('file').files[0];
     var read = new FileReader();
     read.onload = function(e) {
@@ -106,7 +106,7 @@ function taskRankingPerPlayer(){
 
 
 /*Faz o parser e gera e imprime o relatório conforme a Task Plus*/
-function plus(){        
+function generateTaskplus(){        
     var file = document.getElementById('file').files[0];
     var read = new FileReader();
     read.onload = function(e) {
