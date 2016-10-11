@@ -1,5 +1,5 @@
        
-/*Faz o parser do arquivo*/
+/*Faz o parser e gera e imprime conforme a task1 */
 function task1(){        
     var file = document.getElementById('file').files[0];
     var read = new FileReader();
@@ -59,7 +59,53 @@ function task1(){
     read.readAsText(file);
 }
 
-/*Task Plus*/
+
+/*Faz o parser e gera ranking por jogador conforme a task 2*/
+function taskRankingPerPlayer(){        
+    var file = document.getElementById('file').files[0];
+    var read = new FileReader();
+    read.onload = function(e) {
+        var contents = e.target.result;
+        var array = contents.split('\n');
+        var players = {};
+
+        //Faz a leitura do arquivo games.log
+        for(var i=0; i< array.length; i++){
+            switch(true){
+
+                //Quando inicia o jogo
+                case array[i].indexOf('ClientUserinfoChanged:') !== -1:
+                    var player = array[i].split('n\\')[1].split('\\t\\')[0];
+                    if(Object.keys(players).indexOf(player) == -1){
+                        players[player]=0;
+                    }
+                break;
+
+                //Matou
+                case array[i].indexOf('Kill:') !== -1:
+                    for(var k=0; k<Object.keys(players).length;k++){
+                        //Quando mata, o seu kill é somado
+                        if(array[i].split('killed')[0].indexOf(Object.keys(players)[k])!==-1){
+                            players[Object.keys(players)[k]] += 1;
+                        }
+                        //Quando o word mata alguém, esse alguem tem o kill subtraído
+                        if(array[i].split('killed')[0].indexOf('<world>')!==-1 && array[i].split('killed')[1].indexOf(Object.keys(players)[k])!==-1){
+                            players[Object.keys(players)[k]] -= 1;
+                        }
+                        
+                    }
+                break;
+            }
+        }
+
+        //Gera o arquivo
+        generateFile('task1_and_task2', JSON.stringify(players,null,2));
+    }
+    read.readAsText(file);
+}
+
+
+/*Faz o parser e gera e imprime o relatório conforme a Task Plus*/
 function plus(){        
     var file = document.getElementById('file').files[0];
     var read = new FileReader();
@@ -105,6 +151,7 @@ function plus(){
 }
 
 
+/*Metodo que faz imprime em arquivo texto*/
 function generateFile(filename,text){
 
 	var element = document.createElement('a');
