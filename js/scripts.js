@@ -54,7 +54,7 @@ function generateTask1(){
         	}
         }
         //Gera o arquivo
-        generateFile('task1_and_task2', JSON.stringify(games,null,2));
+        generateFile('task1', JSON.stringify(games,null,2));
     }
     read.readAsText(file);
 }
@@ -99,7 +99,7 @@ function generateRankingPerPlayer(){
         }
 
         //Gera o arquivo
-        generateFile('task1_and_task2', JSON.stringify(players,null,2));
+        generateFile('ranking_per_player', JSON.stringify(players,null,2));
     }
     read.readAsText(file);
 }
@@ -145,7 +145,7 @@ function generateTaskplus(){
             }
         }
         //Gera o arquivo
-        generateFile('plus', JSON.stringify(games,null,2));
+        generateFile('task plus', JSON.stringify(games,null,2));
     }
     read.readAsText(file);
 }
