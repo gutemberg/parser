@@ -1,39 +1,39 @@
+Quake log Parser
+
 Como foi proposto no Exame conforme "Quake log Parser" no link "https://gist.github.com/Tempo-Telecom/6addf5dea09235e05340"
 
-O exame proposto foi que fizesse o parsser do arquivo game.log.
-Task1:
-	Construa um parser para o arquivo de log games.log.
-	O arquivo games.log é gerado pelo servidor de quake 3 arena. Ele registra todas as informações dos jogos, quando um jogo começa, quando termina, quem matou quem, quem morreu pq caiu no vazio, quem morreu machucado, entre outros.
-	O parser deve ser capaz de ler o arquivo, agrupar os dados de cada jogo, e em cada jogo deve coletar as informações de morte.
+O exame proposto foi que fizesse o parser do arquivo game.log.
 
-	Objeservação:
-		Quando o <world> mata o player ele perde -1 kill.
-		<world> não é um player e não deve aparecer na lista de players e nem no dicionário de kills.
-		total_kills são os kills dos games, isso inclui mortes do <world>.
+Task1:
+Construa um parser para o arquivo de log games.log.
+O arquivo games.log é gerado pelo servidor de quake 3 arena. Ele registra todas as informações dos jogos, quando um jogo começa, quando termina, quem matou quem, quem morreu pq caiu no vazio, quem morreu machucado, entre outros.
+O parser deve ser capaz de ler o arquivo, agrupar os dados de cada jogo, e em cada jogo deve coletar as informações de morte.
+Observação:
+Quando o <world> mata o player ele perde -1 kill.
+<world> não é um player e não deve aparecer na lista de players e nem no dicionário de kills.
+total_kills são os kills dos games, isso inclui mortes do <world>.
 
 Task2:
-	Após construir o parser construa um script que imprima um relatório de cada jogo (simplemente imprimindo o hash) e um ranking geral de kills por jogador.
+Após construir o parser construa um script que imprima um relatório de cada jogo (simplemente imprimindo o hash) e um ranking geral de kills por jogador.
 
 Plus:
-	Gerar um relatório de mortes agrupando pelo motivo da morte, por partida.
+Gerar um relatório de mortes agrupando pelo motivo da morte, por partida.
 
 
-Esse app foi escrito exclusivamente em javascript, html e bootstrap.
-Não a necessidade de instalar nenhuma dependencia apenas abrir no browser.
+Nota
+
+Esse app foi escrito em javascript, html e bootstrap.
+Não há necessidade de instalar nenhuma dependência, apenas abra no browser.
 
 Para fazer o parser basta selecionar o arquivo game.log e clickar em "Task 1"
-e então será gerado um arquivo parseado respeitando as exigências do exame task1 da tempo telecom.
+e então será gerado um arquivo parseado respeitando as exigências do exame task1 da Tempo Telecom.
 
 Para gerar o arquivo de ranking basta selecionar o arquivo game.log e clickar em "Ranking Geral por Jogador".
 
-Para gerar o relatório de mortes pelo motivo da morte basta selecionar o arquivo game.log e clickar em "Task Plus"
-
+Para gerar o relatório de mortes pelo motivo da morte basta selecionar o arquivo game.log e clickar em "Task Plus".
 
 Atenção:
+O jogo foi entendido como encerrado quando um novo se iniciou pela descrição "InitGame:"
+e não pela descrição "ShutdownGame:" caso esteja incorreto posso fazer a correção imediata.
 
-	1: 
-	O jogo foi entendido como encerrado quando um novo se iniciou pela descrição "InitGame:"
-	e não pela descrição "ShutdownGame:" caso esteja incorreto posso fazer a correção imediata.
-	
-	2:
-	Para que o arquivo abra no formato especificado no exame basta utilizar o workpad.
+Para que o arquivo abra no formato especificado no exame basta utilizar o workpad.
