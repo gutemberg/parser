@@ -1,4 +1,4 @@
-<h3>Quake log Parser<h3>
+<h3>Quake log Parser</h3>
 
 Como foi proposto no Exame conforme "Quake log Parser" no link "https://gist.github.com/Tempo-Telecom/6addf5dea09235e05340"
 
