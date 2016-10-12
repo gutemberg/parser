@@ -1,4 +1,4 @@
-Quake log Parser
+<h3>Quake log Parser<h3>
 
 Como foi proposto no Exame conforme "Quake log Parser" no link "https://gist.github.com/Tempo-Telecom/6addf5dea09235e05340"
 
@@ -32,8 +32,8 @@ Para gerar o arquivo de ranking basta selecionar o arquivo game.log e clickar em
 
 Para gerar o relatório de mortes pelo motivo da morte basta selecionar o arquivo game.log e clickar em "Task Plus".
 
-Atenção:
+Atenção:<br/>
 O jogo foi entendido como encerrado quando um novo se iniciou pela descrição "InitGame:"
 e não pela descrição "ShutdownGame:" caso esteja incorreto posso fazer a correção imediata.
 
-Para que o arquivo abra no formato especificado no exame basta utilizar o workpad.
+Para que o arquivo abra no formato especificado no exame basta utilizar o Wordpad.
